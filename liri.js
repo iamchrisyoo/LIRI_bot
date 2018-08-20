@@ -2,7 +2,7 @@ var keys = require('./keys.js');
 
 var Twitter = require('twitter');
 
-var spotify = require('spotify');
+var Spotify = require('node-spotify-api');
 
 var request = require('request');
 
@@ -26,6 +26,11 @@ var getMyTweets = function() {
 }
  
 var getMeSpotify = function(songName) {
+	var spotify = new Spotify({
+  id: '55a6d0eb1be34ae7b9ebcb9b05450f37',
+  secret: '9de0160bb7f44f01ae3489b2bf8cb767'
+});
+
 	spotify.search({ type: 'track', query: songName }, function(err, data) {
     	if ( err ) {
         	console.log('Error occurred: ' + err);
